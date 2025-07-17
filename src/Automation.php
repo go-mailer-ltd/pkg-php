@@ -7,7 +7,7 @@ use Exception;
 class Automation
 {
   protected $api_key = '';
-  protected $base_url = 'https://automata.go-mailer.com';
+  protected $base_url = 'https://api.go-mailer.com';
 
   function __construct($api_key)
   {
@@ -28,7 +28,7 @@ class Automation
     $body = ['event_code' => $event_code, 'contact_email' => $contact_email, 'context' => $context];
     $headers = ['Authorization: Bearer ' . $this->api_key];
 
-    curl_setopt($curl, CURLOPT_URL, $this->base_url . '/api/v1/events/trigger');
+    curl_setopt($curl, CURLOPT_URL, $this->base_url . '/v1/automations');
     curl_setopt($curl, CURLOPT_POST, 1);
     curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($body));
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);

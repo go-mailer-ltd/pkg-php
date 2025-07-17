@@ -7,7 +7,7 @@ use Exception;
 class Mailing
 {
   protected $api_key = '';
-  private $base_url = 'https://mailing.go-mailer.com';
+  private $base_url = 'https://api.go-mailer.com';
 
   function __construct($api_key)
   {
@@ -34,7 +34,7 @@ class Mailing
 
     $headers = ['Authorization: Bearer ' . $this->api_key];
 
-    curl_setopt($curl, CURLOPT_URL, $this->base_url . '/api/v1/transactionals/dispatch');
+    curl_setopt($curl, CURLOPT_URL, $this->base_url . '/v1/transactionals');
     curl_setopt($curl, CURLOPT_POST, 1);
     curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($body));
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
